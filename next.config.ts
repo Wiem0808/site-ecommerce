@@ -16,7 +16,6 @@ const nextConfig: NextConfig = {
       { protocol: 'http', hostname: '**' },
     ],
   },
-  output: 'standalone',
 };
 
 export default nextConfig;
