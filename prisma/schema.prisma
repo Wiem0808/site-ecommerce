@@ -5,9 +5,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// PostgreSQL — URL configured in prisma.config.ts
+// PostgreSQL
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 // ─── Users & Authentication ───
