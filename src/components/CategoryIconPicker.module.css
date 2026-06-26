@@ -1,0 +1,191 @@
+/* ───────────────────────────────────────────────
+   CategoryIconPicker — Ultra Premium CSS
+   Inspired by: Apple App Store, Shopify Admin,
+   Linear, Stripe Dashboard
+─────────────────────────────────────────────── */
+
+/* ── Shared Animations ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-4px) rotate(0.5deg); }
+  66% { transform: translateY(-2px) rotate(-0.5deg); }
+}
+
+@keyframes shimmerSlide {
+  0% { transform: translateX(-100%) rotate(15deg); }
+  100% { transform: translateX(200%) rotate(15deg); }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.7) rotate(-8deg); opacity: 0; }
+  60% { transform: scale(1.08) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: var(--tile-shadow); }
+  50% { box-shadow: var(--tile-shadow-glow); }
+}
+
+/* ── Tile Base ── */
+.tile {
+  --tile-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  --tile-shadow-glow: 0 12px 40px rgba(0,0,0,0.3);
+  position: relative;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease;
+}
+
+/* Sizes */
+.sm  { width: 40px; height: 40px; border-radius: 12px; }
+.md  { width: 52px; height: 52px; border-radius: 14px; }
+.lg  { width: 64px; height: 64px; border-radius: 18px; }
+.xl  { width: 80px; height: 80px; border-radius: 22px; }
+
+/* Float animation for display tiles */
+.animated {
+  animation: float 4s ease-in-out infinite;
+}
+.animated:hover {
+  animation: none;
+  transform: scale(1.08) translateY(-2px);
+}
+
+/* ── Shimmer Overlay ── */
+.shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255,255,255,0.18) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%) rotate(15deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tile:hover .shimmer,
+.pickerTile:hover .shimmer {
+  animation: shimmerSlide 0.7s ease forwards;
+}
+
+/* Inner icon wrapper */
+.iconInner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+}
+
+/* ── Picker Grid ── */
+.pickerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 10px;
+  padding: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  max-height: 260px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+
+.pickerGrid::-webkit-scrollbar { width: 4px; }
+.pickerGrid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+/* ── Picker Item (button wrapper) ── */
+.pickerItem {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Stagger entrance animations */
+.pickerItem:nth-child(1)  { animation-delay: 0.00s; }
+.pickerItem:nth-child(2)  { animation-delay: 0.03s; }
+.pickerItem:nth-child(3)  { animation-delay: 0.06s; }
+.pickerItem:nth-child(4)  { animation-delay: 0.09s; }
+.pickerItem:nth-child(5)  { animation-delay: 0.12s; }
+.pickerItem:nth-child(6)  { animation-delay: 0.15s; }
+.pickerItem:nth-child(7)  { animation-delay: 0.18s; }
+.pickerItem:nth-child(8)  { animation-delay: 0.21s; }
+.pickerItem:nth-child(9)  { animation-delay: 0.24s; }
+.pickerItem:nth-child(10) { animation-delay: 0.27s; }
+.pickerItem:nth-child(11) { animation-delay: 0.30s; }
+.pickerItem:nth-child(12) { animation-delay: 0.33s; }
+.pickerItem:nth-child(13) { animation-delay: 0.36s; }
+.pickerItem:nth-child(14) { animation-delay: 0.39s; }
+.pickerItem:nth-child(15) { animation-delay: 0.42s; }
+.pickerItem:nth-child(16) { animation-delay: 0.45s; }
+.pickerItem:nth-child(17) { animation-delay: 0.48s; }
+.pickerItem:nth-child(18) { animation-delay: 0.51s; }
+.pickerItem:nth-child(19) { animation-delay: 0.54s; }
+.pickerItem:nth-child(20) { animation-delay: 0.57s; }
+.pickerItem:nth-child(21) { animation-delay: 0.60s; }
+
+/* ── Picker Tile (the colored square) ── */
+.pickerTile {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease;
+}
+
+.pickerTile:hover {
+  transform: scale(1.15) translateY(-3px);
+}
+
+.pickerItem:active .pickerTile {
+  transform: scale(0.93);
+}
+
+.pickerIconInner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* ── Selected State ── */
+.pickerSelected .pickerTile {
+  transform: scale(1.12) translateY(-2px);
+}
+
+.selectedRing {
+  position: absolute;
+  inset: -4px;
+  border-radius: 18px;
+  border: 2.5px solid white;
+  pointer-events: none;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.2),
+              0 4px 16px rgba(0,0,0,0.3);
+  animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

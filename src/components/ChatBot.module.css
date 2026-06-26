@@ -1,0 +1,212 @@
+.toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dim));
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  z-index: var(--z-chatbot);
+  box-shadow: var(--shadow-glow);
+  transition: all var(--transition-normal);
+  animation: float 4s ease-in-out infinite;
+}
+
+.toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 50px rgba(108, 92, 231, 0.5);
+}
+
+[dir="rtl"] .toggle {
+  right: auto;
+  left: 24px;
+}
+
+.window {
+  position: fixed;
+  bottom: 100px;
+  right: 24px;
+  width: 380px;
+  max-width: calc(100vw - 48px);
+  height: 520px;
+  max-height: calc(100vh - 140px);
+  background: var(--surface-container);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--glass-border);
+  z-index: var(--z-chatbot);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeInUp 0.3s ease-out;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+[dir="rtl"] .window {
+  right: auto;
+  left: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dim));
+  color: white;
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.headerTitle {
+  font-size: var(--font-caption);
+  font-weight: 700;
+}
+
+.status {
+  font-size: var(--font-small);
+  color: #55efc4;
+}
+
+.minimize {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.message {
+  display: flex;
+  max-width: 85%;
+}
+
+.userMsg {
+  align-self: flex-end;
+}
+
+.botMsg {
+  align-self: flex-start;
+}
+
+.msgBubble {
+  padding: 10px 14px;
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+
+.userMsg .msgBubble {
+  background: var(--color-primary);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.botMsg .msgBubble {
+  background: var(--surface-container-high);
+  color: var(--text-primary);
+  border-bottom-left-radius: 4px;
+}
+
+.msgText {
+  font-size: var(--font-caption);
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.msgTime {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  text-align: right;
+}
+
+.userMsg .msgTime {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.inputArea {
+  display: flex;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-top: 1px solid var(--outline-variant);
+}
+
+.input {
+  flex: 1;
+  border: none;
+  background: var(--surface-container-high);
+  padding: 10px 16px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-caption);
+  color: var(--text-primary);
+}
+
+.input:focus {
+  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.3);
+}
+
+.sendBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dim));
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.sendBtn:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-glow);
+}
+
+@media (max-width: 480px) {
+  .window {
+    bottom: 80px;
+    right: 8px;
+    width: calc(100vw - 16px);
+    height: calc(100vh - 100px);
+  }
+}

@@ -1,0 +1,25 @@
+# Render Blueprint - Auto-deploy WIWISHOP
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: wiwishop
+    runtime: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: wiwishop-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+
+databases:
+  - name: wiwishop-db
+    plan: free
+    region: frankfurt

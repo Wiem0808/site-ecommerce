@@ -1,0 +1,496 @@
+/* ============================================
+   ACCOUNT PAGE — User Dashboard
+   ============================================ */
+
+.accountPage {
+  min-height: 100vh;
+  padding: var(--space-2xl) var(--space-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2xl);
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-tertiary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: white;
+  text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(108, 92, 231, 0.3);
+}
+
+.headerInfo h1 {
+  font-size: var(--font-h2);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.headerInfo p {
+  font-size: var(--font-caption);
+  color: var(--text-secondary);
+}
+
+.roleBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-small);
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.roleAdmin {
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(177, 144, 254, 0.15));
+  color: var(--color-primary-light);
+  border: 1px solid rgba(108, 92, 231, 0.2);
+}
+
+.roleCustomer {
+  background: rgba(0, 184, 148, 0.1);
+  color: var(--color-success);
+  border: 1px solid rgba(0, 184, 148, 0.15);
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-size: var(--font-caption);
+  font-weight: 600;
+  color: var(--color-error);
+  background: rgba(255, 110, 132, 0.08);
+  border: 1px solid rgba(255, 110, 132, 0.15);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.logoutBtn:hover {
+  background: rgba(255, 110, 132, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Navigation Tabs */
+.tabs {
+  display: flex;
+  gap: var(--space-xs);
+  background: var(--surface-container);
+  border-radius: var(--radius-lg);
+  padding: 4px;
+  margin-bottom: var(--space-xl);
+  overflow-x: auto;
+  animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+.tabBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-size: var(--font-caption);
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+}
+
+.tabBtn:hover {
+  color: var(--text-primary);
+  background: var(--surface-container-high);
+}
+
+.tabBtnActive {
+  color: white;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dim));
+  box-shadow: 0 4px 16px rgba(108, 92, 231, 0.3);
+}
+
+/* Content Section */
+.content {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.statCard {
+  background: var(--surface-container);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  transition: all var(--transition-normal);
+}
+
+.statCard:hover {
+  border-color: rgba(108, 92, 231, 0.15);
+  box-shadow: var(--shadow-hover);
+}
+
+.statIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.statValue {
+  font-size: var(--font-h3);
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.statLabel {
+  font-size: var(--font-small);
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Profile Form */
+.profileSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+}
+
+.profileCard {
+  background: var(--surface-container);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+}
+
+.profileCard h3 {
+  font-size: var(--font-h3);
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.formGroup {
+  margin-bottom: var(--space-md);
+}
+
+.formGroup label {
+  display: block;
+  font-size: var(--font-small);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.formGroup input {
+  width: 100%;
+}
+
+.saveBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 12px 28px;
+  border-radius: var(--radius-md);
+  font-size: var(--font-caption);
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dim));
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: none;
+  margin-top: var(--space-sm);
+}
+
+.saveBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(108, 92, 231, 0.35);
+}
+
+/* Orders List */
+.ordersList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.orderCard {
+  background: var(--surface-container);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all var(--transition-normal);
+}
+
+.orderCard:hover {
+  border-color: rgba(108, 92, 231, 0.15);
+  box-shadow: var(--shadow-hover);
+}
+
+.orderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.orderNumber {
+  font-weight: 700;
+  font-size: var(--font-body);
+  color: var(--text-primary);
+}
+
+.orderDate {
+  font-size: var(--font-small);
+  color: var(--text-muted);
+}
+
+.orderMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.orderTotal {
+  font-weight: 800;
+  font-size: var(--font-body);
+  color: var(--color-primary-light);
+}
+
+.orderStatus {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-small);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.statusPending {
+  background: rgba(253, 203, 110, 0.12);
+  color: var(--color-warning);
+}
+
+.statusDelivered {
+  background: rgba(0, 184, 148, 0.12);
+  color: var(--color-success);
+}
+
+.statusShipped {
+  background: rgba(108, 92, 231, 0.12);
+  color: var(--color-primary-light);
+}
+
+.statusCancelled {
+  background: rgba(255, 110, 132, 0.12);
+  color: var(--color-error);
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: var(--space-3xl) var(--space-xl);
+  color: var(--text-muted);
+}
+
+.emptyIcon {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  background: var(--surface-container-high);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-md);
+  color: var(--text-muted);
+}
+
+.emptyState h3 {
+  font-size: var(--font-h3);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.emptyState p {
+  font-size: var(--font-caption);
+  max-width: 300px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Admin Quick Access */
+.adminCard {
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.08), rgba(177, 144, 254, 0.05));
+  border: 1px solid rgba(108, 92, 231, 0.15);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-lg);
+  transition: all var(--transition-normal);
+}
+
+.adminCard:hover {
+  border-color: rgba(108, 92, 231, 0.3);
+  box-shadow: 0 8px 30px rgba(108, 92, 231, 0.1);
+}
+
+.adminCardContent {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.adminCardIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dim));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.adminCardText h3 {
+  font-size: var(--font-body);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.adminCardText p {
+  font-size: var(--font-caption);
+  color: var(--text-secondary);
+}
+
+.adminCardBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 10px 24px;
+  border-radius: var(--radius-md);
+  font-size: var(--font-caption);
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dim));
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+}
+
+.adminCardBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(108, 92, 231, 0.35);
+  color: white;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.loadingSpinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--outline-variant);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .profileSection {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .accountPage {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tabs {
+    gap: 2px;
+  }
+
+  .tabBtn {
+    padding: 10px 14px;
+    font-size: var(--font-small);
+  }
+
+  .orderCard {
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+
+  .adminCard {
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+}
