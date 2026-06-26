@@ -8,7 +8,11 @@ const globalForPrisma = globalThis as unknown as {
 
 function createPrismaClient() {
   const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:admin@localhost:5432/wiwi_shop?schema=public';
-  const pool = new Pool({ connectionString });
+  const isProduction = process.env.NODE_ENV === 'production';
+  const pool = new Pool({ 
+    connectionString,
+    ssl: isProduction ? { rejectUnauthorized: false } : false,
+  });
   const adapter = new PrismaPg(pool);
   return new PrismaClient({ adapter });
 }
